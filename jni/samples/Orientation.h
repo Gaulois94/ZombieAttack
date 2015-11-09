@@ -1,0 +1,12 @@
+#ifndef DEF_ORIENTATION_INCLUDE
+#define DEF_ORIENTATION_INCLUDE
+
+enum Orientation
+{
+	AHEAD,
+	BACK,
+	TOLEFT,
+	TORIGHT
+};
+
+#endif
