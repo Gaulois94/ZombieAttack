@@ -1,16 +1,24 @@
 #include "Context/ContextManager.h"
 
-Context::Context(Updatable* parent) : Updatable(this), MainMenu(this), Game(this)
+ContextManager::ContextManager(Updatable* parent) : Updatable(parent), m_game(this), m_mainMenu(this)
 {
-	m_currentContext = &MainMenu;
-	Game.setCanUpdate(false);
 	contextManager = this;
-	game = this;
+	game = &m_game;
+	m_currentContext = &m_mainMenu;
+	m_game.setCanUpdate(false);
 }
 
-void Context::changeContext(uint8_t c)
+void ContextManager::onFocus(uint32_t pID, Render& render)
 {
-	m_currentContext->pause();
+	if(m_currentContext == &m_game)
+		m_currentContext->onFocus(pID, render);
+}
+
+void ContextManager::changeContext(uint8_t c)
+{
+	if(m_currentContext)
+		m_currentContext->pause();
+
 	switch(c)
 	{
 		case GAME_CONTEXT:
@@ -22,5 +30,19 @@ void Context::changeContext(uint8_t c)
 		default:
 			break;
 	}
-	m_currentContext->resume();
+	if(m_currentContext)
+		m_currentContext->resume();
+}
+
+void ContextManager::accelerometerEvent(float x, float y, float z)
+{
+	if(m_currentContext == &m_game)
+		m_game.accelerometerEvent(x, y, z);
+}
+
+void ContextManager::initResources()
+{
+	fontResources.add("dejavusansmono", Font::fontFromAssets("fonts/dejavusansmono.ttf"));
+	textureResources.add("players", Texture::loadAndroidFile("tileset.png"));
+	textureResources.add("character", Texture::loadAndroidFile("character.png"));
 }

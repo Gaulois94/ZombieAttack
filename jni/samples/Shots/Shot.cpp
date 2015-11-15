@@ -2,6 +2,7 @@
 
 Shot::Shot(Updatable* parent, Material* material, uint32_t damage) : Sprite(parent, material, NULL), m_damage(damage), m_destroy(false)
 {
+	m_updateFocus = false;
 	scale(glm::vec3(0.01, 0.15, 1.0));
 }
 

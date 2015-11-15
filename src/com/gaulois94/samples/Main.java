@@ -1,6 +1,6 @@
 package com.gaulois94.samples;
 
-import com.gaulois94.ZombieRenderer;
+import com.gaulois94.samples.ZombieRenderer;
 
 import android.app.Activity;
 import android.content.Context;
@@ -52,6 +52,6 @@ public class Main extends Activity
 
 	static
 	{
-		System.loadLibrary("engine");
+		System.loadLibrary("zombieAttack");
 	}
 }

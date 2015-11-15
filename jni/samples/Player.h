@@ -33,7 +33,7 @@ class Player : public PatternAnimation
 		Orientation m_orientation;
 		Weapon*     m_currentWeapon;
 		ResourcesManager<Weapon*> m_weapons;
-		TextureMaterial* m_textureMaterial;
+		TextureMaterial m_textureMaterial;
 };
 
 #endif

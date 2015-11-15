@@ -20,11 +20,11 @@ class Game : public Context
 		Game(Updatable* parent);
 		void start();
 		void quit();
+		void onFocus(uint32_t pID, Render& render);
 		void onUpdate(Render& renderer);
 		void finish();
 		void addScore(uint32_t score);
 		void accelerometerEvent(float x, float y, float z);
-		static void initResources();
 	private:
 		uint32_t       m_score;
 		bool           m_hasChangedOrientation;

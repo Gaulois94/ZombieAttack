@@ -10,6 +10,11 @@ ZombieRenderer::~ZombieRenderer()
 		delete m_contextManager;
 }
 
+void ZombieRenderer::onFocus(uint32_t pID, Render& render)
+{
+	m_contextManager->onFocus(pID, render);
+}
+
 void ZombieRenderer::accelerometerEvent(float x, float y, float z)
 {
 	if(m_contextManager)

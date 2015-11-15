@@ -6,18 +6,22 @@
 
 #include "Updatable.h"
 #include "Context/MainMenu.h"
-#include "Game.h"
+#include "Context/Game.h"
+#include "Context/Context.h"
 #include "Resources.h"
 
 class ContextManager : public Updatable
 {
 	public:
 		ContextManager(Updatable* parent);
+		void onFocus(uint32_t pID, Render& render);
+		void accelerometerEvent(float x, float y, float z);
 		void changeContext(uint8_t context);
+		static void initResources();
 	private:
-		MainMenu m_mainMenu;
 		Game     m_game;
-		Updatable* m_currentContext;
+		MainMenu m_mainMenu;
+		Context* m_currentContext;
 };
 
 #endif

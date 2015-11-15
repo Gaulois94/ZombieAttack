@@ -17,7 +17,7 @@ class MachineGun : public Weapon
 		~MachineGun();
 		void createShots(const Player& player, Shot**& shots, uint32_t& nbShots);
 	private:
-		Material* m_shotMaterial;
+		UniColorMaterial m_shotMaterial;
 };
 
 #endif

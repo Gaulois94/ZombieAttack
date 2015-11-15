@@ -2,14 +2,18 @@
 #define DEF_ZOMBIERENDERER
 
 #include "Renderer.h"
-#include "Context/ContextManager.cpp"
+#include "Context/ContextManager.h"
+#include "Materials/UniColorMaterial.h"
+#include "Shape/Circle.h"
+#include "Shape/Rectangle.h"
 
 class ZombieRenderer : public Renderer
 {
 	public:
 		ZombieRenderer(Updatable* parent);
 		~ZombieRenderer();
-		accelerometerEvent(float x, float y, float z);
+		void onFocus(uint32_t pID, Render& render);
+		void accelerometerEvent(float x, float y, float z);
 		void init();
 	private:
 		ContextManager* m_contextManager;

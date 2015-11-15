@@ -25,7 +25,7 @@ class EnnemyManager : public Updatable
 	public:
 		EnnemyManager(Updatable* parent);
 		~EnnemyManager();
-		void update(Render& render);
+		void onUpdate(Render& render);
 		uint32_t doDamage(uint32_t i, uint32_t damage);
 		Ennemy** getEnnemies();
 		uint32_t getNbEnnemies() const;
@@ -33,7 +33,6 @@ class EnnemyManager : public Updatable
 		void deleteEnnemies();
 	private:
 		TextureMaterial m_textureMaterial;
-		Texture* m_ennemiesTexture;
 		Ennemy** m_ennemies;
 		uint32_t m_nbEnnemies;
 		uint32_t m_nbFrameBeforeNextUpdate;

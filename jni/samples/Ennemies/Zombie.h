@@ -17,7 +17,7 @@ class Zombie : public Ennemy
 		void onUpdate(Render& render);
 		bool collisionPlayer(Player& player);
 	private:
-		TextureMaterial* m_textureMaterial;
+		TextureMaterial m_textureMaterial;
 		float m_paramBezier1;
 		float m_paramBezier2;
 		float m_x;

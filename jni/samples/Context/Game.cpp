@@ -1,4 +1,5 @@
 #include "Context/Game.h"
+#include "ContextManager.h"
 
 Game::Game(Updatable* parent) : Context(parent), m_score(0), m_hasChangedOrientation(false), m_player(this), m_ennemyManager(this), m_interface(this)
 {
@@ -11,10 +12,15 @@ void Game::start()
 void Game::quit()
 {}
 
+void Game::onFocus(uint32_t pID, Render& render)
+{
+	m_interface.onFocus(pID, render);
+}
+
 void Game::onUpdate(Render& render)
 {
 	//Get the shots collisions
-	Shot** shots     = m_player.getShots();
+    Shot** shots     = m_player.getShots();
 	for(uint32_t i=0; i < m_player.getNbShots(); i++)
 	{
 		uint32_t add = shots[i]->doDamage(m_ennemyManager);
@@ -37,6 +43,7 @@ void Game::finish()
 	m_player.deleteShots();
 	m_score = 0;
 	m_interface.setScore(0);
+	contextManager->changeContext(MAINMENU_CONTEXT);
 }
 
 void Game::addScore(uint32_t add)
@@ -57,10 +64,4 @@ void Game::accelerometerEvent(float x, float y, float z)
 
 	else if(z < 0 && m_hasChangedOrientation)
 		m_hasChangedOrientation = false;
-}
-
-void Game::initResources()
-{
-	fontResources.add("dejavusansmono", Font::fontFromAssets("fonts/dejavusansmono.ttf"));
-	textureResources.add("players", Texture::loadAndroidFile("tileset.png"));
 }
