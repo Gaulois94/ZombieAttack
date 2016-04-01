@@ -11,7 +11,7 @@ include $(CLEAR_VARS)
 LOCAL_C_INCLUDES += $(NDK_APP_PROJECT_PATH)/jni/samples/
 LOCAL_C_INCLUDES += $(NDK_APP_PROJECT_PATH)/../Engine/jni/Graphics/
 LOCAL_C_INCLUDES += $(NDK_APP_PROJECT_PATH)/../Engine/jni
-LOCAL_SHARED_LIBRARIES := 
+LOCAL_SHARED_LIBRARIES := engine-prebuilt
 LOCAL_MODULE := zombieAttack
 LOCAL_CFLAGS := -Wall --std=c++11 -g
 APP_OPTIM := debug
@@ -23,6 +23,7 @@ LOCAL_SRC_FILES += samples/Ennemies/Zombie.cpp samples/Ennemies/Kamikaze.cpp
 LOCAL_SRC_FILES += samples/Shots/Shot.cpp samples/Shots/MachineBullet.cpp samples/Shots/ShotGunBullet.cpp
 LOCAL_SRC_FILES += samples/Weapons/Weapon.cpp samples/Weapons/MachineGun.cpp samples/Weapons/ShotGun.cpp
 LOCAL_SRC_FILES += samples/Resources.cpp
+LOCAL_SRC_FILES += samples/scoreHandler.cpp
 
 LOCAL_LDLIBS    += -llog -landroid -lEGL -lGLESv2 -ljnigraphics -latomic -l${LIBENGINE}
 

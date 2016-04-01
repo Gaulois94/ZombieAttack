@@ -17,6 +17,7 @@ class ZombieRenderer : public Renderer
 		void init();
 	private:
 		ContextManager* m_contextManager;
+		Circle m_circle;
 };
 
 #endif

@@ -1,6 +1,6 @@
 #include "ZombieRenderer.h"
 
-ZombieRenderer::ZombieRenderer(Updatable* parent) : Renderer(parent), m_contextManager(NULL)
+ZombieRenderer::ZombieRenderer(Updatable* parent) : Renderer(parent), m_contextManager(NULL), m_circle(this, &m_colorMtl)
 {
 }
 
@@ -23,6 +23,6 @@ void ZombieRenderer::accelerometerEvent(float x, float y, float z)
 
 void ZombieRenderer::init()
 {
-	ContextManager::initResources();
-	m_contextManager = new ContextManager(this);
+//	ContextManager::initResources();
+//	m_contextManager = new ContextManager(this);
 }

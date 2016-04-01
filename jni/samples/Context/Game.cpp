@@ -39,6 +39,7 @@ void Game::onUpdate(Render& render)
 
 void Game::finish()
 {
+	updateScore(m_score);
 	m_ennemyManager.deleteEnnemies();
 	m_player.deleteShots();
 	m_score = 0;
@@ -50,6 +51,11 @@ void Game::addScore(uint32_t add)
 {
 	m_score += add;
 	m_interface.setScore(m_score);
+}
+
+void Game::setWeapon(const char* weapon)
+{
+	m_player.setWeapon(weapon);
 }
 
 void Game::accelerometerEvent(float x, float y, float z)

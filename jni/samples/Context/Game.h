@@ -8,6 +8,8 @@
 #include "Shots/Shot.h"
 #include "Interface.h"
 #include "Context/Context.h"
+#include "scoreHandler.h"
+
 #include "Render.h"
 #include "Updatable.h"
 
@@ -25,6 +27,7 @@ class Game : public Context
 		void finish();
 		void addScore(uint32_t score);
 		void accelerometerEvent(float x, float y, float z);
+		void setWeapon(const char* weapon);
 	private:
 		uint32_t       m_score;
 		bool           m_hasChangedOrientation;

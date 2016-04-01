@@ -6,6 +6,8 @@ Player::Player(Updatable* parent) : PatternAnimation(parent, NULL, textureResour
 	m_updateFocus = false;
 	m_currentWeapon = new MachineGun(this, NULL);
 	m_weapons.add("MachineGun", m_currentWeapon);
+	m_currentWeapon = new ShotGun(this, NULL);
+	m_weapons.add("ShotGun", m_currentWeapon);
 	setMaterial(&m_textureMaterial);
 	scale(glm::vec3(0.22, 0.15, 1.0));
 	setPositionOrigin(glm::vec3(0.5, 0.5, 0.0), true);
@@ -84,4 +86,9 @@ void Player::move(const glm::vec3& m, int useScale)
 		setPosition(glm::vec3(-1.0+o.x, p.y, p.z), false);
 	else if(p.x - o.x + s.x > 1)
 		setPosition(glm::vec3(1.0+o.x-s.x, p.y, p.z), false);
+}
+
+void Player::setWeapon(const char* weapon)
+{
+	m_currentWeapon = m_weapons.get(weapon);
 }

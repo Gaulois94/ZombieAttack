@@ -27,6 +27,7 @@ class Player : public PatternAnimation
 		void destroyShot(uint32_t i);
 		uint32_t getNbShots() const;
 		Orientation getOrientation() const;
+		void setWeapon(const char* weapon);
 	private:
 		Shot**     m_shots;
 		uint32_t    m_nbShots;
